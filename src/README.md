@@ -1,29 +1,30 @@
 # Learning Rust With Entirely Too Many Linked Lists
 
-Got any issues or want to check out all the final code at once?
-[Everything's on Github!][github]
+何か問題があったり、全章の最終的なコードを一度にチェックしたいですか？
+[Githubへどうぞ!][github]
 
-I fairly frequently get asked how to implement a linked list in Rust. The
-answer honestly depends on what your requirements are, and it's obviously not
-super easy to answer the question on the spot. As such I've decided to write
-this book to comprehensively answer the question once and for all.
+私はかなり頻繁にどうやってRustで連結リスト(Linked list)を実装するのか質問を
+受けます。その答えは率直に言ってその人が何を欲するかによりますし、当然それぞれに
+合わせた回答をすることは簡単ではないのです。
+そういった事情で、私は全ての質問に一度で包括的に答えるため、このテキストを
+書くことに決めました。
 
-In this series I will teach you basic and advanced Rust programming
-entirely by having you implement 6 linked lists. In doing so, you should
-learn:
+このシリーズではRustプログラミングの基本と高度な内容全体を、6つの連結リストを
+実装しながら教えていきます。
+その中で以下について学ぶでしょう:
 
-* The following pointer types: `&`, `&mut`, `Box`, `Rc`, `Arc`, `*const`, `*mut`
-* Ownership, borrowing, inherited mutability, interior mutability, Copy
-* All The Keywords: struct, enum, fn, pub, impl, use, ...
-* Pattern matching, generics, destructors
-* Testing
-* Basic Unsafe Rust
+* これらのポインタ型: `&`, `&mut`, `Box`, `Rc`, `Arc`, `*const`, `*mut`
+* 所有権、借用、可変性の継承、内部可変性、Copyトレイト
+* 全てのRustのキーワード: struct, enum, fn, pub, impl, use, ...
+* パターンマッチ、ジェネリクス、デストラクタ
+* 自動テスト
+* UnsafeなRustの基本
 
-Yes, linked lists are so truly awful that you deal with all of these concepts in
-making them real.
+そうです、連結リストは、それを作るのにこれだけの概念を扱わないといけないので
+本当に大変なのです。
 
-Everything's in the sidebar (may be collapsed on mobile), but for quick
-reference, here's what we're going to be making:
+全てのページはサイドバーにあります(モバイルでは隠れているかもしれません)が、
+一覧するために、私たちが作るものをリストアップします:
 
 1. [A Bad Singly Linked Stack](first.md)
 2. [An Ok Singly Linked Stack](second.md)
@@ -33,20 +34,20 @@ reference, here's what we're going to be making:
 6. [TODO: An Ok Unsafe Doubly Linked Deque](sixth.md)
 7. [Bonus: A Bunch of Silly Lists](infinity.md)
 
-Just so we're all the same page, I'll be writing out all the commands that I
-feed into my terminal. I'll also be using Rust's standard package manager, Cargo,
-to develop the project. Cargo isn't necessary to write a Rust program, but it's
-*so much* better than using rustc directly. If you just want to futz around you
-can also run some simple programs in the browser via https://play.rust-lang.org/.
+私とあなたの認識が全く同じになるように、私が端末に打ち込む全てのコマンドを
+書き出します。また、開発にはRustの標準ライブラリとCargoを使用します。Cargoは
+Rustを書くのに必要ではありませんが、rustcを使うより *はるかに* 良いのです。
+もしあなたがあれこれ試したくなったら、 https://play.rust-lang.org/ を使って
+シンプルなプログラムをブラウザ上で実行することができます。
 
-Let's get started and make our project:
+それでは私たちのプロジェクトを作るところから始めましょう:
 
 ```text
 > cargo new --lib lists
 > cd lists
 ```
 
-We'll put each list in a separate file so that we don't lose any of our work.
+それぞれのリストは別々のファイルに置くので、作ったものを失うことはありません。
 
 It should be noted that the *authentic* Rust learning experience involves
 writing code, having the compiler scream at you, and trying to figure out
