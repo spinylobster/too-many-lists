@@ -5,13 +5,11 @@
 
 私はかなり頻繁にどうやってRustで連結リスト(Linked list)を実装するのか質問を
 受けます。その答えは率直に言ってその人が何を欲するかによりますし、当然それぞれに
-合わせた回答をすることは簡単ではないのです。
-そういった事情で、私は全ての質問に一度で包括的に答えるため、このテキストを
-書くことに決めました。
+合わせた回答をすることは簡単ではないのです。そういった事情で、私は全ての質問に
+一度で包括的に答えるため、このテキストを書くことに決めました。
 
 このシリーズではRustプログラミングの基本と高度な内容全体を、6つの連結リストを
-実装しながら教えていきます。
-その中で以下について学ぶでしょう:
+実装しながら教えていきます。その中で以下について学ぶでしょう:
 
 * これらのポインタ型: `&`, `&mut`, `Box`, `Rc`, `Arc`, `*const`, `*mut`
 * 所有権、借用、可変性の継承、内部可変性、Copyトレイト
@@ -49,12 +47,11 @@ Rustを書くのに必要ではありませんが、rustcを使うより *はる
 
 それぞれのリストは別々のファイルに置くので、作ったものを失うことはありません。
 
-It should be noted that the *authentic* Rust learning experience involves
-writing code, having the compiler scream at you, and trying to figure out
-what the heck that means. I will be carefully ensuring that this occurs as
-frequently as possible. Learning to read and understand Rust's generally
-excellent compiler errors and documentation is *incredibly* important to
-being a productive Rust programmer.
+*本物の* Rust学習にはコードを書き、コンパイラが喚き、そしてそれが一体どういう
+意味なのか理解しようと努めるという体験がつきものなのだということを覚悟しなければ
+なりません。私はそうした体験を可能な限り逃さないように注意します。Rustの一般的に
+優れたコンパイルエラーとドキュメントを読んで理解できるようになることは、生産的な
+Rustプログラマになる上で *非常に* 重要なのです。
 
 Although actually that's a lie. In writing this I encountered *way* more
 compiler errors than I show. In particular, in the later chapters I won't be
