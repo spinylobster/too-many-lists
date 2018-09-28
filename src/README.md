@@ -1,15 +1,34 @@
 # Learning Rust With Entirely Too Many Linked Lists
 
+<!-- Got any issues or want to check out all the final code at once?  -->
+<!-- [Everything's on Github!][github] -->
+
 何か問題があったり、全章の最終的なコードを一度にチェックしたいですか？
 [Githubへどうぞ!][github]
+
+<!-- I fairly frequently get asked how to implement a linked list in Rust. The -->
+<!-- answer honestly depends on what your requirements are, and it's obviously not -->
+<!-- super easy to answer the question on the spot. As such I've decided to write -->
+<!--this book to comprehensively answer the question once and for all.  -->
 
 私はかなり頻繁にどうやってRustで連結リスト(linked list)を実装するのか質問を
 受けます。その答えは率直に言ってその人が何を欲するかによりますし、当然この質問
 に即答するのは簡単ではないのです。そういった事情で、私はこの質問に一度で包括的に
 答えるため、このテキストを書くことに決めました。
 
+<!-- In this series I will teach you basic and advanced Rust programming -->
+<!-- entirely by having you implement 6 linked lists. In doing so, you should -->
+<!-- learn: -->
+
 このシリーズではRustプログラミングの基本と高度な内容を、専ら6つの連結リストを
 実装しながら教えていきます。その中で以下について学ぶでしょう:
+
+<!-- * The following pointer types: `&`, `&mut`, `Box`, `Rc`, `Arc`, `*const`, `*mut` -->
+<!-- * Ownership, borrowing, inherited mutability, interior mutability, Copy -->
+<!-- * All The Keywords: struct, enum, fn, pub, impl, use, ... -->
+<!-- * Pattern matching, generics, destructors -->
+<!-- * Testing -->
+<!-- * Basic Unsafe Rust -->
 
 * これらのポインタ型: `&`, `&mut`, `Box`, `Rc`, `Arc`, `*const`, `*mut`
 * 所有権、借用、可変性の継承、内部可変性、Copyトレイト
@@ -18,11 +37,25 @@
 * 自動テスト
 * UnsafeなRustの基本
 
+<!-- Yes, linked lists are so truly awful that you deal with all of these concepts in -->
+<!-- making them real. -->
+
 そうです、連結リストは、それを作るのにこれだけの概念を扱わないといけないので
 本当に大変なのです。
 
+<!-- Everything's in the sidebar (may be collapsed on mobile), but for quick -->
+<!-- reference, here's what we're going to be making: -->
+
 全てのページはサイドバーにあります(モバイルでは隠れているかもしれません)が、
 一覧するために、私たちが作るものをリストアップします:
+
+<!-- 1. [A Bad Singly Linked Stack](first.md) -->
+<!-- 2. [An Ok Singly Linked Stack](second.md) -->
+<!-- 3. [A Persistent Singly Linked Stack](third.md) -->
+<!-- 4. [A Bad But Safe Doubly Linked Deque](fourth.md) -->
+<!-- 5. [An Unsafe Singly Linked Queue](fifth.md) -->
+<!-- 6. [TODO: An Ok Unsafe Doubly Linked Deque](sixth.md) -->
+<!-- 7. [Bonus: A Bunch of Silly Lists](infinity.md) -->
 
 1. [A Bad Singly Linked Stack](first.md)
 2. [An Ok Singly Linked Stack](second.md)
@@ -32,11 +65,19 @@
 6. [TODO: An Ok Unsafe Doubly Linked Deque](sixth.md)
 7. [Bonus: A Bunch of Silly Lists](infinity.md)
 
+<!-- Just so we're all the same page, I'll be writing out all the commands that I -->
+<!-- feed into my terminal. I'll also be using Rust's standard package manager, Cargo, -->
+<!-- to develop the project. Cargo isn't necessary to write a Rust program, but it's -->
+<!-- *so much* better than using rustc directly. If you just want to futz around you -->
+<!-- can also run some simple programs in the browser via https://play.rust-lang.org/. -->
+
 私とあなたの認識が全く同じになるように、私が端末に打ち込む全てのコマンドを
 書き出します。また、開発にはRustの標準ライブラリとCargoを使用します。Cargoは
 Rustを書くのに必要ではありませんが、rustcを直接使うより *はるかに* 良いのです。
 もしあなたがあれこれ試したくなったら、 https://play.rust-lang.org/ を使って
 シンプルなプログラムをブラウザ上で実行することができます。
+
+<!-- Let's get started and make our project: -->
 
 それでは私たちのプロジェクトを作るところから始めましょう:
 
@@ -45,7 +86,16 @@ Rustを書くのに必要ではありませんが、rustcを直接使うより *
 > cd lists
 ```
 
+<!-- We'll put each list in a separate file so that we don't lose any of our work. -->
+
 それぞれのリストは別々のファイルに置くので、作ったものを失うことはありません。
+
+<!-- It should be noted that the *authentic* Rust learning experience involves -->
+<!-- writing code, having the compiler scream at you, and trying to figure out -->
+<!-- what the heck that means. I will be carefully ensuring that this occurs as -->
+<!-- frequently as possible. Learning to read and understand Rust's generally -->
+<!-- excellent compiler errors and documentation is *incredibly* important to -->
+<!-- being a productive Rust programmer. -->
 
 *本物の* Rust学習にはコードを書き、コンパイラが喚き、そしてそれが一体どういう
 意味なのか理解しようと努めるという体験がつきものなのだということを覚悟しなければ
@@ -53,10 +103,22 @@ Rustを書くのに必要ではありませんが、rustcを直接使うより *
 優れたコンパイルエラーとドキュメントを読んで理解できるようになることは、生産的な
 Rustプログラマになる上で *非常に* 重要なのです。
 
+<!-- Although actually that's a lie. In writing this I encountered *way* more -->
+<!-- compiler errors than I show. In particular, in the later chapters I won't be -->
+<!-- showing a lot of the random "I typed (read: copy-pasted) bad" errors that you -->
+<!-- expect to encounter in every language. This is a *guided tour* of having the -->
+<!-- compiler scream at us. -->
+
 実際にはそれは嘘ですが。これを書く中で私はここで見せるより *かなり* 多くの
 コンパイルエラーに遭遇しました。特に、後の章でのどんな言語でも遭遇するような
 無作為に試行錯誤した時のエラーはお見せしません。これはコンパイラが浴びせる
 金切り声を聞く *ガイド付きツアー* です
+
+<!-- We're going to be going pretty slow, and I'm honestly not going to be very -->
+<!-- serious pretty much the entire time. I think programming should be fun, dang it! -->
+<!-- If you're the type of person who wants maximally information-dense, serious, and -->
+<!-- formal content, this book is not for you. Nothing I will ever make is for you. -->
+<!-- You are wrong. -->
 
 我々はだいぶじっくりと進むつもりですし、正直に言って全体の時間がかなり長くなる
 ことはあまり気にするつもりはありません。プログラミングは楽しくあるべきなんだよ、
@@ -66,12 +128,24 @@ Rustプログラマになる上で *非常に* 重要なのです。
 
 
 
+<!-- # An Obligatory Public Service Announcement -->
 
 # 道義的責任を果たすための公共(啓発)広告
+
+<!-- Just so we're totally 100% clear: I hate linked lists. With -->
+<!-- a passion. Linked lists are terrible data structures. Now of course there's -->
+<!-- several great use cases for a linked list: -->
 
 100%完全にはっきりさせておきましょう: 私は連結リストが大嫌いです。生理的に。
 連結リストはひどくまずいデータ構造です。いえ、もちろん連結リストが適したケースは
 いくつかあります:
+
+<!-- * You want to do *a lot* of splitting or merging of big lists. *A lot*. -->
+<!-- * You're doing some awesome lock-free concurrent thing. -->
+<!-- * You're writing a kernel/embedded thing and want to use an intrusive list. -->
+<!-- * You're using a pure functional language and the limited semantics and absence -->
+<!-- of mutation makes linked lists easier to work with. -->
+<!-- * ... and more! -->
 
 * 大きなリストを *たくさん* 分割やマージしたい場合。 *たくさん* ね。
 * 素晴らしいlock-free(スレッドがロックすることのない)並行処理をしている場合
