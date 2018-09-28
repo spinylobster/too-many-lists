@@ -11,7 +11,7 @@
 <!-- super easy to answer the question on the spot. As such I've decided to write -->
 <!--this book to comprehensively answer the question once and for all.  -->
 
-私はかなり頻繁にどうやってRustで連結リスト(linked list)を実装するのか質問を
+私はかなり頻繁にどうやってRustでリンクリスト(linked list)を実装するのか質問を
 受けます。その答えは率直に言ってその人が何を欲するかによりますし、当然この質問
 に即答するのは簡単ではないのです。そういった事情で、私はこの質問に一度で包括的に
 答えるため、このテキストを書くことに決めました。
@@ -20,7 +20,7 @@
 <!-- entirely by having you implement 6 linked lists. In doing so, you should -->
 <!-- learn: -->
 
-このシリーズではRustプログラミングの基本と高度な内容を、専ら6つの連結リストを
+このシリーズではRustプログラミングの基本と高度な内容を、専ら6つのリンクリストを
 実装しながら教えていきます。その中で以下について学ぶでしょう:
 
 <!-- * The following pointer types: `&`, `&mut`, `Box`, `Rc`, `Arc`, `*const`, `*mut` -->
@@ -40,7 +40,7 @@
 <!-- Yes, linked lists are so truly awful that you deal with all of these concepts in -->
 <!-- making them real. -->
 
-そうです、連結リストは、それを作るのにこれだけの概念を扱わないといけないので
+そうです、リンクリストは、それを作るのにこれだけの概念を扱わないといけないので
 本当に大変なのです。
 
 <!-- Everything's in the sidebar (may be collapsed on mobile), but for quick -->
@@ -136,9 +136,9 @@ Rustプログラマになる上で *非常に* 重要なのです。
 <!-- a passion. Linked lists are terrible data structures. Now of course there's -->
 <!-- several great use cases for a linked list: -->
 
-100%完全にはっきりさせておきましょう: 私は連結リストが大嫌いです。生理的に。
-連結リストはひどくまずいデータ構造です。いえ、もちろん連結リストが適したケースは
-いくつかあります:
+100%完全にはっきりさせておきましょう: 私はリンクリストが大嫌いです。生理的に。
+リンクリストはひどくまずいデータ構造です。いえ、もちろんリンクリストが適した
+ケースはいくつかあります:
 
 <!-- * You want to do *a lot* of splitting or merging of big lists. *A lot*. -->
 <!-- * You're doing some awesome lock-free concurrent thing. -->
