@@ -3,17 +3,17 @@
 何か問題があったり、全章の最終的なコードを一度にチェックしたいですか？
 [Githubへどうぞ!][github]
 
-私はかなり頻繁にどうやってRustで連結リスト(Linked list)を実装するのか質問を
-受けます。その答えは率直に言ってその人が何を欲するかによりますし、当然それぞれに
-合わせた回答をすることは簡単ではないのです。そういった事情で、私は全ての質問に
-一度で包括的に答えるため、このテキストを書くことに決めました。
+私はかなり頻繁にどうやってRustで連結リスト(linked list)を実装するのか質問を
+受けます。その答えは率直に言ってその人が何を欲するかによりますし、当然この質問
+に即答するのは簡単ではないのです。そういった事情で、私はこの質問に一度で包括的に
+答えるため、このテキストを書くことに決めました。
 
-このシリーズではRustプログラミングの基本と高度な内容全体を、6つの連結リストを
+このシリーズではRustプログラミングの基本と高度な内容を、専ら6つの連結リストを
 実装しながら教えていきます。その中で以下について学ぶでしょう:
 
 * これらのポインタ型: `&`, `&mut`, `Box`, `Rc`, `Arc`, `*const`, `*mut`
 * 所有権、借用、可変性の継承、内部可変性、Copyトレイト
-* 全てのRustのキーワード: struct, enum, fn, pub, impl, use, ...
+* 盛り沢山のRustのキーワード: struct, enum, fn, pub, impl, use, ...
 * パターンマッチ、ジェネリクス、デストラクタ
 * 自動テスト
 * UnsafeなRustの基本
@@ -34,7 +34,7 @@
 
 私とあなたの認識が全く同じになるように、私が端末に打ち込む全てのコマンドを
 書き出します。また、開発にはRustの標準ライブラリとCargoを使用します。Cargoは
-Rustを書くのに必要ではありませんが、rustcを使うより *はるかに* 良いのです。
+Rustを書くのに必要ではありませんが、rustcを直接使うより *はるかに* 良いのです。
 もしあなたがあれこれ試したくなったら、 https://play.rust-lang.org/ を使って
 シンプルなプログラムをブラウザ上で実行することができます。
 
@@ -53,30 +53,29 @@ Rustを書くのに必要ではありませんが、rustcを使うより *はる
 優れたコンパイルエラーとドキュメントを読んで理解できるようになることは、生産的な
 Rustプログラマになる上で *非常に* 重要なのです。
 
-Although actually that's a lie. In writing this I encountered *way* more
-compiler errors than I show. In particular, in the later chapters I won't be
-showing a lot of the random "I typed (read: copy-pasted) bad" errors that you
-expect to encounter in every language. This is a *guided tour* of having the
-compiler scream at us.
+実際にはそれは嘘ですが。これを書く中で私はここで見せるより *かなり* 多くの
+コンパイルエラーに遭遇しました。特に、後の章でのどんな言語でも遭遇するような
+無作為に試行錯誤した時のエラーはお見せしません。これはコンパイラが浴びせる
+金切り声を聞く *ガイド付きツアー* です
 
-We're going to be going pretty slow, and I'm honestly not going to be very
-serious pretty much the entire time. I think programming should be fun, dang it!
-If you're the type of person who wants maximally information-dense, serious, and
-formal content, this book is not for you. Nothing I will ever make is for you.
-You are wrong.
-
+我々はだいぶじっくりと進むつもりですし、正直に言って全体の時間がかなり長くなる
+ことはあまり気にするつもりはありません。プログラミングは楽しくあるべきなんだよ、
+くそったれ！もしあなたが極限まで情報密度を高めた、真面目な、お堅い内容を求める
+タイプの人なら、このテキストはあなたに向いていません。私があなたのためにする
+ことは何一つありません。あなたは間違っています。
 
 
 
-# An Obligatory Public Service Announcement
 
-Just so we're totally 100% clear: I hate linked lists. With
-a passion. Linked lists are terrible data structures. Now of course there's
-several great use cases for a linked list:
+# 道義的責任を果たすための公共(啓発)広告
 
-* You want to do *a lot* of splitting or merging of big lists. *A lot*.
-* You're doing some awesome lock-free concurrent thing.
-* You're writing a kernel/embedded thing and want to use an intrusive list.
+100%完全にはっきりさせておきましょう: 私は連結リストが大嫌いです。生理的に。
+連結リストはひどくまずいデータ構造です。いえ、もちろん連結リストが適したケースは
+いくつかあります:
+
+* 大きなリストを *たくさん* 分割やマージしたい場合。 *たくさん* ね。
+* 素晴らしいlock-free(スレッドがロックすることのない)並行処理をしている場合
+* カーネルや組み込みの処理を書いていて侵入的リスト(intrusive list)が使いたい場合
 * You're using a pure functional language and the limited semantics and absence
   of mutation makes linked lists easier to work with.
 * ... and more!
