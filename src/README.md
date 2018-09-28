@@ -150,15 +150,22 @@ Rustプログラマになる上で *非常に* 重要なのです。
 * 大きなリストを *たくさん* 分割やマージしたい場合。 *たくさん* ね。
 * 素晴らしいlock-free(スレッドがロックすることのない)並行処理をしている場合
 * カーネルや組み込みの処理を書いていて侵入的リスト(intrusive list)が使いたい場合
-* You're using a pure functional language and the limited semantics and absence
-  of mutation makes linked lists easier to work with.
-* ... and more!
+* 純粋関数型言語を使っていて、意味論的制約や変更不能性の都合上リンクリストの方が
+扱いやすい場合
+* ... などなど！
 
-But all of these cases are *super rare* for anyone writing a Rust program. 99%
-of the time you should just use a Vec (array stack), and 99% of the other 1%
-of the time you should be using a VecDeque (array deque). These are blatantly
-superior data structures for most workloads due to less frequent allocation,
-lower memory overhead, true random access, and cache locality.
+<!-- But all of these cases are *super rare* for anyone writing a Rust program. 99% -->
+<!-- of the time you should just use a Vec (array stack), and 99% of the other 1% -->
+<!-- of the time you should be using a VecDeque (array deque). These are blatantly -->
+<!-- superior data structures for most workloads due to less frequent allocation, -->
+<!-- lower memory overhead, true random access, and cache locality. -->
+
+でもこれらの場合というのはRustを書いている人にとっては *激レア* なのです。
+99%の場合は単に Vec (array stack) を使うべきですし、残り1%の中の99%の場合は
+VecDeque (array deque) を使うべきです。これらは「メモリ割り当ての頻度がより低い」
+「メモリのオーバーヘッドが低い」「真のランダムアクセスがある」「キャッシュの
+局所性がある」といった理由により大抵リンクリストに比べて計算量の面で明らかに
+優れたデータ構造です。
 
 Linked lists are as *niche* and *vague* of a data structure as a trie. Few would
 balk at me claiming a trie is a niche structure that your average programmer
