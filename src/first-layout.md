@@ -1,54 +1,81 @@
 # Basic Data Layout
 
-Alright, so what's a linked list? Well basically, it's a bunch of pieces of data
-on the heap (shhh Linux Kernel!) that point to each other in sequence. Linked
-lists are something procedural programmers shouldn't touch with a 10-foot pole,
-and what functional programmers use for everything. It seems fair, then, that we
-should ask functional programmers for the definition of a linked list. They will
-probably give you something like the following definition:
+<!-- Alright, so what's a linked list? Well basically, it's a bunch of pieces of data -->
+<!-- on the heap (shhh Linux Kernel!) that point to each other in sequence. Linked -->
+<!-- lists are something procedural programmers shouldn't touch with a 10-foot pole, -->
+<!-- and what functional programmers use for everything. It seems fair, then, that we -->
+<!-- should ask functional programmers for the definition of a linked list. They will -->
+<!-- probably give you something like the following definition: -->
+
+よし、それで、リンクリストって何でしたっけ？ええっと基本的には、リンクリストは
+ヒープ上にある(Linux Kernelのことは言わないで！)、それぞれが他のデータを指し示す
+順序付きのデータの束です。リンクリストは手続き型プログラマが関わってはいけない
+何かで、関数型プログラマが全てにおいて使うものです。なので、我々がリンクリストの
+定義を関数型プログラマに尋ねることになるのは尤もなことです。彼らはおそらく以下の
+ような定義を示してくれるでしょう:
 
 ```haskell
 List a = Empty | Elem a (List a)
 ```
 
-Which reads approximately as "A List is either Empty or an Element followed by a
-List". This is a recursive definition expressed as a *sum type*, which is a
-fancy name for "a type that can have different values which may be different
-types". Rust calls sum types `enum`s! If you're coming from a C-like language,
-this is exactly the enum you know and love, but on meth. So let's transcribe
-this functional definition into Rust!
+<!-- Which reads approximately as "A List is either Empty or an Element followed by a -->
+<!-- List". This is a recursive definition expressed as a *sum type*, which is a -->
+<!-- fancy name for "a type that can have different values which may be different -->
+<!-- types". Rust calls sum types `enum`s! If you're coming from a C-like language, -->
+<!-- this is exactly the enum you know and love, but on meth. So let's transcribe -->
+<!-- this functional definition into Rust! -->
 
-For now we'll avoid generics to keep things simple. We'll only support
-storing signed 32-bit integers:
+これは大体「リストは空か要素と続きのリストである」と読めます。この再帰的な
+定義は *直和型* と呼ばれ、「異なる型の異なる値を持つことができる型」のしゃれた
+ネーミングです。Rustでは直和型のことを `enum`と呼びます！もしあなたがC言語系の
+言語の経験があるなら、これはまさにあなたがよく知っていて大好きな、ただし中毒性の
+あるenumです。ではこの関数型的定義をRustに書き写してみましょう！
+
+<!-- For now we'll avoid generics to keep things simple. We'll only support -->
+<!-- storing signed 32-bit integers: -->
+
+今のところは、我々はことをシンプルに保つためにジェネリクスを使うのは避けます。
+我々がサポートするのは、符号付き32bit整数の格納だけです。
 
 ```rust,ignore
-// in first.rs
+// first.rs の中
 
-// pub says we want people outside this module to be able to use List
+// pub はこのモジュールを使う人がListを使えるようにするという意味です
 pub enum List {
     Empty,
     Elem(i32, List),
 }
 ```
 
-*phew*, I'm swamped. Let's just go ahead and compile that:
+<!-- *phew*, I'm swamped. Let's just go ahead and compile that: -->
+
+*やれやれ* 、もうくたくたです。コンパイルして次に進んでみましょう:
 
 ```text
 > cargo build
    Compiling lists v0.1.0 (file:///Users/ABeingessner/dev/lists)
 src/first.rs:1:1: 4:2 error: recursive type `first::List` has infinite size [E0072]
+(エラー: 再帰的な型 `first::List` は無数のサイズを持ちます [E0072])
 src/first.rs:1 pub enum List {
               ^
 src/first.rs:1:1: 4:2 help: run `rustc --explain E0072` to see a detailed explanation
+(助言: `rustc --explain E0072` を実行して詳細な説明を確認してください)
 src/first.rs:1:1: 4:2 help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `first::List` representable
+(関節参照(例: `Box`, `Rc`, `&`)をどこかに挟んで `first::List` を表現可能な型にしてください)
 error: aborting due to previous error
+(ひとつ前のエラーによりコンパイルを中止します)
 error: Could not compile `list`.
+(`list` がコンパイルできませんでした。)
 
 To learn more, run the command again with --verbose.
+(更に知りたい場合、--verboseオプションを付けて再度コマンドを実行してください)
 ```
 
-Noooooooo!!!! Functional programmers tricked us! That made us do something
-*illegal*! This is entrapment!
+<!-- Noooooooo!!!! Functional programmers tricked us! That made us do something -->
+<!-- *illegal*! This is entrapment! -->
+
+なんじゃこりゃあ！！！！関数型プログラマに騙されたんだ！何か *不正な* ことを
+させられました！これは罠です！
 
 ...
 
