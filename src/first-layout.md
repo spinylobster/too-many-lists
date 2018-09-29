@@ -79,24 +79,37 @@ To learn more, run the command again with --verbose.
 
 ...
 
-I'm ok now. Are you ok now? If we actually check out the error message (instead
-of getting ready to flee the country, as \*ahem\* *some* of us did), we can see
-that rustc is actually telling us exactly how to solve this problem:
+<!-- I'm ok now. Are you ok now? If we actually check out the error message (instead -->
+<!-- of getting ready to flee the country, as \*ahem\* *some* of us did), we can see -->
+<!-- that rustc is actually telling us exactly how to solve this problem: -->
+
+もう大丈夫です。あなたも落ち着きましたか？改めてエラーメッセージを読んでみると
+(私が…… \*エヘン\* 我々の中の *どなたか* がしたように国から逃げ出そうとするの
+ではなく)、rustcは実際には我々が問題を解決する方法を教えてくれています:
 
 > insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `first::List` representable
+> (関節参照(例: `Box`, `Rc`, `&`)をどこかに挟んで `first::List` を表現可能な型にしてください)
 
-Alright, `box`. What's that? Let's google `rust box`...
+<!-- Alright, `box`. What's that? Let's google `rust box`... -->
+
+なるほど、 `box` 。何ですかそれ？ `rust box` でググりましょう……
 
 > [std::boxed::Box - Rust](https://doc.rust-lang.org/std/boxed/struct.Box.html)
 
-Lesse here...
+<!-- Lesse here... -->
+
+一部を抜き出すと……
 
 > `pub struct Box<T>(_);`
 >
 > A pointer type for heap allocation.
 > See the [module-level documentation](https://doc.rust-lang.org/std/boxed/) for more.
+> (ヒープに割り当てられた値を指すポインタ型。
+> [module-level documentation](https://doc.rust-lang.org/std/boxed/) を参照)
 
-*clicks link*
+<!-- *clicks link* -->
+
+*リンクを開きます*
 
 > `Box<T>`, casually referred to as a 'box', provides the simplest form of heap allocation in Rust. Boxes provide ownership for this allocation, and drop their contents when they go out of scope.
 >
