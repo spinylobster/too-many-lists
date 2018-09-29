@@ -183,9 +183,13 @@ VecDeque (array deque) を使うべきです。これらは「メモリ割り当
 リンクリストは[私がstd::collectionsから葬り去ることのできない](rust-std-list)
 唯一需要のないコレクションです。[C++ではなんと *これが* listです](cpp-std-list)。
 
-We should all as a community say *no* to linked lists as a "standard" data
-structure. It's a fine data structure with several great use cases, but those
-use cases are *exceptional*, not common.
+<!-- We should all as a community say *no* to linked lists as a "standard" data -->
+<!-- structure. It's a fine data structure with several great use cases, but those -->
+<!-- use cases are *exceptional*, not common. -->
+
+我々はコミュニティとしてリンクリストを *標準的なデータ構造* として扱うことに
+*No* と言わなければなりません。リンクリストは幾つかのケースでは良いデータ構造
+ですが、それらのケースは *例外的* であり、ありふれたものではありません。
 
 Several people apparently read the first paragraph of this PSA and then stop
 reading. Like, literally they'll try to rebut my argument by listing one of the
