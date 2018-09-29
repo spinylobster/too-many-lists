@@ -17,7 +17,7 @@
 `src/lib.rs` の一番上に置きます:
 
 ```rust
-// in lib.rs
+// lib.rs の中
 pub mod first;
 ```
 
