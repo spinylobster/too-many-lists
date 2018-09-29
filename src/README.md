@@ -112,7 +112,7 @@ Rustプログラマになる上で *非常に* 重要なのです。
 実際にはそれは嘘ですが。これを書く中で私はここで見せるより *かなり* 多くの
 コンパイルエラーに遭遇しました。特に、後の章でのどんな言語でも遭遇するような
 無作為に試行錯誤した時のエラーはお見せしません。これはコンパイラが浴びせる
-金切り声を聞く *ガイド付きツアー* です
+金切り声を聞く *ガイド付きツアー* です。
 
 <!-- We're going to be going pretty slow, and I'm honestly not going to be very -->
 <!-- serious pretty much the entire time. I think programming should be fun, dang it! -->
