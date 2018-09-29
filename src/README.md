@@ -191,14 +191,23 @@ VecDeque (array deque) を使うべきです。これらは「メモリ割り当
 *No* と言わなければなりません。リンクリストは幾つかのケースでは良いデータ構造
 ですが、それらのケースは *例外的* であり、ありふれたものではありません。
 
-Several people apparently read the first paragraph of this PSA and then stop
-reading. Like, literally they'll try to rebut my argument by listing one of the
-things in my list of *great use cases*. The thing right after the first
+<!-- Several people apparently read the first paragraph of this PSA and then stop -->
+<!-- reading. Like, literally they'll try to rebut my argument by listing one of the -->
+<!-- things in my list of *great use cases*. The thing right after the first -->
+<!-- paragraph! -->
+
+いくつかの人々はこのPSA(公共広告)の最初の段落を一見して読むのを止めてしまう
+でしょう。Like, literally they'll try to rebut my argument by listing one of
+the things in my list of *great use cases*. The thing right after the first
 paragraph!
 
-Just so I can link directly to a detailed argument, here are several attempts
-at counter-arguments I have seen, and my response to them. Feel free to skip
-to [the end](#take-a-breath) if you just want to learn some Rust!
+<!-- Just so I can link directly to a detailed argument, here are several attempts -->
+<!-- at counter-arguments I have seen, and my response to them. Feel free to skip -->
+<!-- to [the end](#take-a-breath) if you just want to learn some Rust! -->
+
+ここに詳しい議論を直接貼っておきます。これは私が受けたいくつかの反論とその返答
+です。もしあなたがただRustを学びたいだけなら、どうぞ
+[この章の最後](#take-a-breath) までスキップしてください！
 
 
 
@@ -381,9 +390,13 @@ can get kinda gnarly, as we'll see.
 
 
 
-# Take a Breath
+<!-- # Take a Breath -->
 
-Ok. That's out of the way. Let's write a bajillion linked lists.
+# 一息つきましょう
+
+<!-- Ok. That's out of the way. Let's write a bajillion linked lists. -->
+
+さて、脱線は終わりです。たっくさんリンクリストを書きますよ。
 
 
 
