@@ -88,7 +88,7 @@ To learn more, run the command again with --verbose.
 ではなく)、rustcは実際には我々が問題を解決する方法を教えてくれています:
 
 > insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `first::List` representable
-> (関節参照(例: `Box`, `Rc`, `&`)をどこかに挟んで `first::List` を表現可能な型にしてください)
+> (間接参照(例: `Box`, `Rc`, `&`)をどこかに挟んで `first::List` を表現可能な型にしてください)
 
 <!-- Alright, `box`. What's that? Let's google `rust box`... -->
 
