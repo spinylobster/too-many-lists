@@ -144,7 +144,8 @@ fn main() {
 >
 > It wouldn't work. This is because the size of a List depends on how many elements are in the list, and so we don't know how much memory to allocate for a Cons. By introducing a Box, which has a defined size, we know how big Cons needs to be.
 
-Wow, uh. That is perhaps the most relevant and helpful documentation I have ever seen. Literally the first thing in the documentation is *exactly what we're trying to write, why it didn't work, and how to fix it*. Dang, yo. Docs.
+<!-- Wow, uh. That is perhaps the most relevant and helpful documentation I have ever seen. Literally the first thing in the  documentation is *exactly what we're trying to write, why it didn't work, and how to fix it*. Dang, yo. Docs. -->
+おや、えー、これほど関連性があって役に立つドキュメンテーションはもしかすると今まで見たことがないかもしれません。ドキュメンテーションの一番最初に載っているのが文字通り *まさに我々が書こうとしているもの、それが上手くいかない理由、そしてそれを直す方法* です。ちくしょう、うん。Docs.
 
 Ok, let's do that:
 
