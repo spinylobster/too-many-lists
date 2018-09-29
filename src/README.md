@@ -167,13 +167,21 @@ VecDeque (array deque) を使うべきです。これらは「メモリ割り当
 局所性がある」といった理由により大抵リンクリストに比べて計算量の面で明らかに
 優れたデータ構造です。
 
-Linked lists are as *niche* and *vague* of a data structure as a trie. Few would
-balk at me claiming a trie is a niche structure that your average programmer
-could happily never learn in an entire productive career -- and yet linked lists
-have some bizarre celebrity status. We teach every undergrad how to write a
-linked list. It's the only niche collection
-[I couldn't kill from std::collections][rust-std-list]. It's
-[*the* list in C++][cpp-std-list]!
+<!-- Linked lists are as *niche* and *vague* of a data structure as a trie. Few would -->
+<!-- balk at me claiming a trie is a niche structure that your average programmer -->
+<!-- could happily never learn in an entire productive career -- and yet linked lists -->
+<!-- have some bizarre celebrity status. We teach every undergrad how to write a -->
+<!-- linked list. It's the only niche collection -->
+<!-- [I couldn't kill from std::collections][rust-std-list]. It's -->
+<!-- [*the* list in C++][cpp-std-list]! -->
+
+リンクリストはトライ木(trie)と同じぐらい *ニッチ* で *いつ役に立つのかよく
+分からない* データ構造です。トライ木がニッチなデータ構造であって、平均的な
+プログラマがたくさんのものを生み出すその生涯で一度も学ぶことにはならないだろうと
+いう私の主張に反論する人は少ないでしょう……。なのに、リンクリストは奇妙なことに
+名声ある地位に在るのです。我々は学生時代にリンクリストの書き方を教えられますし、
+リンクリストは[私がstd::collectionsから葬り去ることのできない](rust-std-list)
+唯一需要のないコレクションです。[C++ではなんと *これが* listです](cpp-std-list)。
 
 We should all as a community say *no* to linked lists as a "standard" data
 structure. It's a fine data structure with several great use cases, but those
