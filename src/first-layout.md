@@ -25,11 +25,12 @@ List a = Empty | Elem a (List a)
 <!-- this is exactly the enum you know and love, but on meth. So let's transcribe -->
 <!-- this functional definition into Rust! -->
 
-これは大体「リストは空か要素と続きのリストである」と読めます。これは *直和型* というもので表された再帰的定義です。
-*直和型* とは、「異なる型の異なる値を持つことができる型」のしゃれた
-ネーミングです。Rustでは直和型のことを `enum`と呼びます！もしあなたがC言語系の
-言語の経験があるなら、これはまさにあなたがよく知っていて大好きな、ただし中毒性の
-あるenumです。ではこの関数型的定義をRustに書き写してみましょう！
+これは大体「リストは空か要素と続きのリストである」と読めます。これは *直和型*
+というもので表された再帰的定義です。 *直和型* とは、「異なる型の異なる値を持つ
+ことができる型」のしゃれたネーミングです。Rustでは直和型のことを `enum`と
+呼びます！もしあなたがC言語系の言語の経験があるなら、これはまさにあなたがよく
+知っていて大好きな、ただし中毒性のあるenumです。ではこの関数型的定義をRustに
+書き写してみましょう！
 
 <!-- For now we'll avoid generics to keep things simple. We'll only support -->
 <!-- storing signed 32-bit integers: -->
