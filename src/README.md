@@ -196,7 +196,7 @@ VecDeque (array deque) を使うべきです。これらは「メモリ割り当
 <!-- things in my list of *great use cases*. The thing right after the first -->
 <!-- paragraph! -->
 
-いくつかの人々はこのPSA(公共広告)の最初の段落を一見して読むのを止めてしまう
+いくらかの人々はこのPSA(公共広告)の最初の段落を一見して読むのを止めてしまう
 みたいです。なんていうか、彼らは私がまさに *適した使い方* の一覧に載せたものを
 挙げて反論しようとするんです。第一段落の直後に書いたのに！
 
