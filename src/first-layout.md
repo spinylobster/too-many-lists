@@ -245,11 +245,16 @@ Fooの値は `D1`, `D2`, .. `Dn` で表される *列挙子* を示すintegerを
 大きいものを格納できるスペース(とデータ構造アライメントのためのスペース)も
 必要です。
 
-The big takeaway here is that even though `Empty` is a single bit of
-information, it necessarily consumes enough space for a pointer and an element,
-because it has to be ready to become an `Elem` at any time. Therefore the first
-layout heap allocates an extra element that's just full of junk, consuming a
-bit more space than the second layout.
+<!-- The big takeaway here is that even though `Empty` is a single bit of -->
+<!-- information, it necessarily consumes enough space for a pointer and an element, -->
+<!-- because it has to be ready to become an `Elem` at any time. Therefore the first -->
+<!-- layout heap allocates an extra element that's just full of junk, consuming a -->
+<!-- bit more space than the second layout. -->
+
+ここで大切なのは、たとえ `Empty` が単ビットの情報であっても、ポインタと要素が入る
+だけのスペースを消費しないといけないことです。いつ `Elem` になってもいいように。
+最初の形だとヒープに使わないスペースばかりの余計な要素が一つあるので、二つ目の
+形よりちょっとスペースを消費するのです。
 
 One of our nodes not being allocated at all is also, perhaps surprisingly,
 *worse* than always allocating it. This is because it gives us a *non-uniform*
