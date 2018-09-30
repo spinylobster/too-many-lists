@@ -61,7 +61,7 @@ src/first.rs:1 pub enum List {
 src/first.rs:1:1: 4:2 help: run `rustc --explain E0072` to see a detailed explanation
 (助言: `rustc --explain E0072` を実行して詳細な説明を確認してください)
 src/first.rs:1:1: 4:2 help: insert indirection (e.g., a `Box`, `Rc`, or `&`) at some point to make `first::List` representable
-(関節参照(例: `Box`, `Rc`, `&`)をどこかに挟んで `first::List` を表現可能な型にしてください)
+(間接参照(例: `Box`, `Rc`, `&`)をどこかに挟んで `first::List` を表現可能な型にしてください)
 error: aborting due to previous error
 (ひとつ前のエラーによりコンパイルを中止します)
 error: Could not compile `list`.
