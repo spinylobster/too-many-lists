@@ -55,7 +55,7 @@ pub enum List {
 > cargo build
    Compiling lists v0.1.0 (file:///Users/ABeingessner/dev/lists)
 src/first.rs:1:1: 4:2 error: recursive type `first::List` has infinite size [E0072]
-(エラー: 再帰的な型 `first::List` は無数のサイズを持ちます [E0072])
+(エラー: 再帰的な型 `first::List` は無限のサイズを持ちます [E0072])
 src/first.rs:1 pub enum List {
               ^
 src/first.rs:1:1: 4:2 help: run `rustc --explain E0072` to see a detailed explanation
