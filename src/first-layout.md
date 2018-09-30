@@ -113,14 +113,18 @@ To learn more, run the command again with --verbose.
 *リンクを開きます*
 
 > `Box<T>`, casually referred to as a 'box', provides the simplest form of heap allocation in Rust. Boxes provide ownership for this allocation, and drop their contents when they go out of scope.
+> (`Box<T>` は通常 'box' と呼ばれ、Rustにおいて最もシンプルなヒープ割り当てを提供します。boxは割り当てられたヒープ参照の所有権を提供し、それがスコープから外れた時に値を破棄(drop)します。)
 >
 > Examples
+> (例)
 >
 > Creating a box:
+> (boxの作成):
 >
 > `let x = Box::new(5);`
 >
 > Creating a recursive data structure:
+> (再帰的データ構造の作成):
 >
 ```
 #[derive(Debug)]
@@ -138,12 +142,15 @@ fn main() {
 ```
 >
 > This will print `Cons(1, Box(Cons(2, Box(Nil))))`.
+> (出力は `Cons(1, Box(Cons(2, Box(Nil))))` になります。)
 >
 > Recursive structures must be boxed, because if the definition of Cons looked like this:
+> (再帰的な構造は、ボックス化されていなければなりません。なぜなら、もしConsの定義がこのようになっていた時):
 >
 > `Cons(T, List<T>),`
 >
 > It wouldn't work. This is because the size of a List depends on how many elements are in the list, and so we don't know how much memory to allocate for a Cons. By introducing a Box, which has a defined size, we know how big Cons needs to be.
+> (コンパイルできないからです。これはListのサイズがその要素の数によって変わるので、Consのためにどれくらいのメモリを割り当てれば良いかが分からないことが理由です。サイズが定められているBoxを使うことによって、Consがどれくらいのメモリを要するかを識別します。)
 
 <!-- Wow, uh. That is perhaps the most relevant and helpful documentation I have ever seen. Literally the first thing in the  documentation is *exactly what we're trying to write, why it didn't work, and how to fix it*. Dang, yo. Docs. -->
 
