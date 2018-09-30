@@ -156,7 +156,9 @@ fn main() {
 
 おや、えー、これほど関連性があって役に立つドキュメンテーションはもしかすると今まで見たことがないかもしれません。ドキュメンテーションの一番最初に載っているのが文字通り *まさに我々が書こうとしているもの、それが上手くいかない理由、そしてそれを直す方法* です。Docs、すげーぜちくしょう。
 
-Ok, let's do that:
+<!-- Ok, let's do that: -->
+
+OK、早速やってみましょう:
 
 ```rust
 pub enum List {
@@ -170,11 +172,17 @@ pub enum List {
    Compiling lists v0.1.0 (file:///Users/ABeingessner/dev/lists)
 ```
 
-Hey it built!
+<!-- Hey it built! -->
 
-...but this is actually a really stupid definition of a List, for a few reasons.
+やった、ビルドできました！
 
-Consider a list with two elements:
+<!-- ...but this is actually a really stupid definition of a List, for a few reasons. -->
+
+……しかしいくつかの理由から、このListの定義には実際全く思慮が足りていません。
+
+<!-- Consider a list with two elements: -->
+
+二つの要素をもつリストを考えてみましょう:
 
 ```text
 [] = Stack
@@ -183,25 +191,40 @@ Consider a list with two elements:
 [Elem A, ptr] -> (Elem B, ptr) -> (Empty *junk*)
 ```
 
-There are two key issues:
+<!-- There are two key issues: -->
 
-* We're allocating a node that just says "I'm not actually a Node"
-* One of our nodes isn't allocated at all.
+二つの重要な問題があります:
 
-On the surface, these two seem to cancel each-other out. We allocate an
-extra node, but one of our nodes doesn't need to be allocated at all.
-However, consider the following potential layout for our list:
+<!-- * We're allocating a node that just says "I'm not actually a Node" -->
+<!-- * One of our nodes isn't allocated at all. -->
+
+* 「俺は実はノードじゃないんだぜ」というためだけのノードが割り当てられている
+* ノードの一つはヒープに割り当てられていない
+
+<!-- On the surface, these two seem to cancel each-other out. We allocate an -->
+<!-- extra node, but one of our nodes doesn't need to be allocated at all. -->
+<!-- However, consider the following potential layout for our list: -->
+
+表面上は、これら二つは互いに打ち消しあってノーカンのように思えます。我々は余計な
+ノードの割り当てが一つ、割り当てる必要のないノードが一つ。でも、我々のリストが
+こんな形だったらどうでしょう:
 
 ```text
 [ptr] -> (Elem A, ptr) -> (Elem B, *null*)
 ```
 
-In this layout we now unconditionally heap allocate our nodes. The
-key difference is the absence of the *junk* from our first layout. What is
-this junk? To understand that, we'll need to look at how an enum is laid out
-in memory.
+<!-- In this layout we now unconditionally heap allocate our nodes. The -->
+<!-- key difference is the absence of the *junk* from our first layout. What is -->
+<!-- this junk? To understand that, we'll need to look at how an enum is laid out -->
+<!-- in memory. -->
 
-In general, if we have an enum like:
+この形だとノードは無条件にヒープ割り当てになります。重要な違いは、 *junk* が
+最初の形から消えたことです。このjunkは何なのか？それを理解するには、enumが
+どういう風にメモリに展開されるのかを見る必要があります。
+
+<!-- In general, if we have an enum like: -->
+
+一般的に、このようなenumがあった時:
 
 ```rust
 enum Foo {
@@ -212,10 +235,15 @@ enum Foo {
 }
 ```
 
-A Foo will need to store some integer to indicate which *variant* of the enum it
-represents (`D1`, `D2`, .. `Dn`). This is the *tag* of the enum. It will also
-need enough space to store the *largest* of `T1`, `T2`, .. `Tn` (plus some extra
-space to satisfy alignment requirements).
+<!-- A Foo will need to store some integer to indicate which *variant* of the enum it -->
+<!-- represents (`D1`, `D2`, .. `Dn`). This is the *tag* of the enum. It will also -->
+<!-- need enough space to store the *largest* of `T1`, `T2`, .. `Tn` (plus some extra -->
+<!-- space to satisfy alignment requirements). -->
+
+Fooの値は `D1`, `D2`, .. `Dn` で表される *列挙子* を示すintegerを何か格納する
+必要があります。これはenumの *タグ* です。それから `T1`, `T2`, .. `Tn` の中で最も
+大きいものを格納できるスペース(とデータ構造アライメントのためのスペース)も
+必要です。
 
 The big takeaway here is that even though `Empty` is a single bit of
 information, it necessarily consumes enough space for a pointer and an element,
