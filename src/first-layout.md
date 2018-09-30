@@ -7,7 +7,7 @@
 <!-- should ask functional programmers for the definition of a linked list. They will -->
 <!-- probably give you something like the following definition: -->
 
-よし、それで、リンクリストって何でしたっけ？ええっと基本的には、リンクリストは
+よし、それで、リンクリストって何でしたっけ？ええっと要するに、リンクリストは
 ヒープ上にある(Linux Kernelのことは言わないで！)、それぞれが他のデータを指し示す
 順序付きのデータの束です。リンクリストは手続き型プログラマが関わってはいけない
 何かで、関数型プログラマが全てにおいて使うものです。なので、我々がリンクリストの
