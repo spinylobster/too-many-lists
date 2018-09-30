@@ -197,9 +197,8 @@ VecDeque (array deque) を使うべきです。これらは「メモリ割り当
 <!-- paragraph! -->
 
 いくつかの人々はこのPSA(公共広告)の最初の段落を一見して読むのを止めてしまう
-でしょう。Like, literally they'll try to rebut my argument by listing one of
-the things in my list of *great use cases*. The thing right after the first
-paragraph!
+みたいです。なんていうか、彼らは私がまさに *適した使い方* の一覧に載せたものを
+挙げて反論しようとするんです。第一段落の直後に書いたのに！
 
 <!-- Just so I can link directly to a detailed argument, here are several attempts -->
 <!-- at counter-arguments I have seen, and my response to them. Feel free to skip -->
