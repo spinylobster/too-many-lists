@@ -256,12 +256,18 @@ Fooの値は `D1`, `D2`, .. `Dn` で表される *列挙子* を示すintegerを
 最初の形だとヒープに使わないスペースばかりの余計な要素が一つあるので、二つ目の
 形よりちょっとスペースを消費するのです。
 
-One of our nodes not being allocated at all is also, perhaps surprisingly,
-*worse* than always allocating it. This is because it gives us a *non-uniform*
-node layout. This doesn't have much of an appreciable effect on pushing and
-popping nodes, but it does have an effect on splitting and merging lists.
+<!-- One of our nodes not being allocated at all is also, perhaps surprisingly, -->
+<!-- *worse* than always allocating it. This is because it gives us a *non-uniform* -->
+<!-- node layout. This doesn't have much of an appreciable effect on pushing and -->
+<!-- popping nodes, but it does have an effect on splitting and merging lists. -->
 
-Consider splitting a list in both layouts:
+割り当てられないノードもまた、驚くかもしれませんが、常に割り当てられるより
+*悪い* のです。なぜなら *統一されていない* 設計だからです。pushやpopでは大して
+影響しませんが、splitやmergeには影響します。
+
+<!-- Consider splitting a list in both layouts: -->
+
+二つの形においてリストを分割することを考えてみましょう:
 
 ```text
 layout 1:
