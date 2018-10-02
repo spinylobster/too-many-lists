@@ -291,9 +291,13 @@ split off C:
 [ptr] -> (Elem C, *null*)
 ```
 
-Layout 2's split involves just copying B's pointer to the stack and nulling
-the old value out. Layout 1 ultimately does the same thing, but also has to
-copy C from the heap to the stack. Merging is the same process in reverse.
+<!-- Layout 2's split involves just copying B's pointer to the stack and nulling -->
+<!-- the old value out. Layout 1 ultimately does the same thing, but also has to -->
+<!-- copy C from the heap to the stack. Merging is the same process in reverse. -->
+
+layout 2での分割はBのポインタをスタックにコピーして元の値をnullにするだけです。
+layout 1も突き詰めればやっていることは同じですが、Cをヒープからスタックにコピー
+しないといけません。マージも逆になるだけで、同じ過程を経ます。
 
 One of the few nice things about a linked list is that you can construct the
 element in the node itself, and then freely shuffle it around lists without
