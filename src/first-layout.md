@@ -29,7 +29,7 @@ List a = Empty | Elem a (List a)
 というもので表された再帰的定義です。 *直和型* とは、「異なる型の異なる値を持つ
 ことができる型」のしゃれたネーミングです。Rustでは直和型のことを `enum`と
 呼びます！もしあなたがC言語系の言語の経験があるなら、これはまさにあなたがよく
-知っていて大好きな、ただし中毒性のあるenumです。ではこの関数型的定義をRustに
+知っていて大好きなenumです。ではこの関数型的定義をRustに
 書き写してみましょう！
 
 <!-- For now we'll avoid generics to keep things simple. We'll only support -->
