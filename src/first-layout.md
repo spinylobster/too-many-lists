@@ -299,10 +299,14 @@ layout 2での分割はBのポインタをスタックにコピーして元の�
 layout 1も突き詰めればやっていることは同じですが、Cをヒープからスタックにコピー
 しないといけません。マージも逆になるだけで、同じ過程を経ます。
 
-One of the few nice things about a linked list is that you can construct the
-element in the node itself, and then freely shuffle it around lists without
-ever moving it. You just fiddle with pointers and stuff gets "moved". Layout 1
-trashes this property.
+<!-- One of the few nice things about a linked list is that you can construct the -->
+<!-- element in the node itself, and then freely shuffle it around lists without -->
+<!-- ever moving it. You just fiddle with pointers and stuff gets "moved". Layout 1 -->
+<!-- trashes this property. -->
+
+リンクリストの数少ない利点の一つとして、ノードの中で一度要素を構築したらそれを二度とメモリ上で
+移動させることなくリスト内での順序を自由に動かせるという点があります。ポインタをいじればモノが
+「動いて」くれるからです。layout 1はこの性質を台無しにしてしまいます。
 
 Alright, I'm reasonably convinced Layout 1 is bad. How do we rewrite our List?
 Well, we could do something like:
