@@ -330,10 +330,17 @@ Hopefully this seems like an even worse idea to you. まず、
 `ElemThenNotEmpty(0, Box(Empty))`が生まれてしまいます。さらに、
 要素を統一的に確保していないという欠点 *も* 残ってしまいます。
 
-However it does have *one* interesting property: it totally avoids allocating
-the Empty case, reducing the total number of heap allocations by 1. Unfortunately,
-in doing so it manages to waste *even more space*! This is because the previous
-layout took advantage of the *null pointer optimization*.
+<!-- However it does have *one* interesting property: it totally avoids allocating -->
+<!-- the Empty case, reducing the total number of heap allocations by 1. Unfortunately, -->
+<!-- in doing so it manages to waste *even more space*! This is because the previous -->
+<!-- layout took advantage of the *null pointer optimization*. -->
+
+とはいえ、*一つ*面白い性質があります。それは、`Empty`のときにメモリ確保するのを完全に省いており、
+ヒープ上メモリ確保の総数を1だけ減らせていることです。残念なことに、その過程でこの案は*さらに多くの空間*
+をムダにするという偉業をやってのけるのです。というのも、変更前のlayoutは*ヌルポインタ最適化*というものを
+利用できていたからです。
+<!-- manage to do の皮肉用法をどう訳すか。ここでは「偉業をやってのける」と煽ってみたが、 -->
+<!-- 新英和大辞典にあるように素直に「愚かにも〜する」とかでもよい気はする。 -->
 
 We previously saw that every enum has to store a *tag* to specify which variant
 of the enum its bits represent. However, if we have a special kind of enum:
