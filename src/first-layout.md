@@ -319,10 +319,16 @@ pub enum List {
 }
 ```
 
-Hopefully this seems like an even worse idea to you. For one, this really
-complicates our logic. In particular, there is now a completely invalid state:
-`ElemThenNotEmpty(0, Box(Empty))`. It also *still* suffers from non-uniformly
-allocating our elements.
+<!-- Hopefully this seems like an even worse idea to you. For one, this really -->
+<!-- complicates our logic. In particular, there is now a completely invalid state: -->
+<!-- `ElemThenNotEmpty(0, Box(Empty))`. It also *still* suffers from non-uniformly -->
+<!-- allocating our elements. -->
+
+<!-- 「これがさらなる改悪案に見えてくれればよいのですが。」とかか？ -->
+Hopefully this seems like an even worse idea to you. まず、
+この案はロジックをとても複雑化させます。特に、これでは完全に無効な状態
+`ElemThenNotEmpty(0, Box(Empty))`が生まれてしまいます。さらに、
+要素を統一的に確保していないという欠点 *も* 残ってしまいます。
 
 However it does have *one* interesting property: it totally avoids allocating
 the Empty case, reducing the total number of heap allocations by 1. Unfortunately,
