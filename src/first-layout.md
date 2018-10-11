@@ -240,7 +240,7 @@ enum Foo {
 <!-- need enough space to store the *largest* of `T1`, `T2`, .. `Tn` (plus some extra -->
 <!-- space to satisfy alignment requirements). -->
 
-Fooの値は `D1`, `D2`, .. `Dn` で表される *列挙子* を示すintegerを何か格納する
+Fooの値は `D1`, `D2`, .. `Dn` で表される *列挙子* を示す整数値を何か格納する
 必要があります。これはenumの *タグ* です。それから `T1`, `T2`, .. `Tn` の中で最も
 大きいものを格納できるスペース(とデータ構造アライメントのためのスペース)も
 必要です。
