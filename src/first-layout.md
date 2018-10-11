@@ -113,7 +113,7 @@ To learn more, run the command again with --verbose.
 *リンクを開きます*
 
 > `Box<T>`, casually referred to as a 'box', provides the simplest form of heap allocation in Rust. Boxes provide ownership for this allocation, and drop their contents when they go out of scope.
-> (`Box<T>` は通常 'box' と呼ばれ、Rustにおいて最もシンプルなヒープ割り当てを提供します。boxは割り当てられたヒープ参照の所有権を提供し、それがスコープから外れた時に値を破棄(drop)します。)
+> (`Box<T>` は通常 'box' と呼ばれ、Rustにおいて最もシンプルなヒープ割り当てを提供します。boxは割り当てられたヒープ参照の所有権を提供し、それがスコープから外れた時に中身を破棄(drop)します。)
 >
 > Examples
 > (例)
