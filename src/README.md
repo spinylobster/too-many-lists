@@ -211,19 +211,22 @@ VecDeque (array deque) を使うべきです。これらは「メモリ割り当
 
 
 
-## Performance doesn't always matter
+<!-- ## Performance doesn't always matter -->
+## パフォーマンスが常に重要なわけではない
 
-Yes! Maybe your application is I/O-bound or the code in question is in some
-cold case that just doesn't matter. But this isn't even an argument for using
-a linked list. This is an argument for using *whatever at all*. Why settle for
-a linked list? Use a linked hash map!
+<!-- Yes! Maybe your application is I/O-bound or the code in question is in some -->
+<!-- cold case that just doesn't matter. But this isn't even an argument for using -->
 
-If performance doesn't matter, then it's *surely* fine to apply the natural
-default of an array.
+<!-- このYesは否定文に対するYesなのでYes it mattersの義 -->
+いいえ、重要です。
+もしかするとあなたのアプリケーションはI/Oバウンドな（訳注: ファイルへの読み書きなどが多く、
+I/Oが速度のボトルネックになるものを指す）ものかもしれません。他にも、全くもってどうでもいい、
+実行される頻度が低いコードパスに件のコードがあるのかもしれません。しかし、これらはそもそもリンクリストを使用する
+ことを支持する論拠ですらありません。これらは *ありとあらゆるもの* を使用することを支持する論拠です。
+なぜリンクリストに甘んじる必要があるのでしょうか？linked hash map<!-- 定訳がわかりませんでしたごめんなさい -->
+を使えばよいのです！
 
-
-
-
+もしパフォーマンスが重要でないなら、*もちろん*自然な既定値である配列を使って申し分ないでしょう。
 
 ## They have O(1) split-append-insert-remove if you have a pointer there
 
