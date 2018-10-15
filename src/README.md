@@ -302,14 +302,20 @@ decent allocator, there are memory savings to be had!*
 
 
 
-## I use linked lists all the time in &lt;functional language&gt;
+<!-- ## I use linked lists all the time in &lt;functional language&gt; -->
+## 私は&lt;ここに関数型言語の名前が入る&gt;でしょっちゅうリンクリストを使う
 
-Great! Linked lists are super elegant to use in functional languages
-because you can manipulate them without any mutation, can describe them
-recursively, and also work with infinite lists due to the magic of laziness.
+<!-- Great! Linked lists are super elegant to use in functional languages -->
+<!-- because you can manipulate them without any mutation, can describe them -->
+<!-- recursively, and also work with infinite lists due to the magic of laziness. -->
+素晴らしい！リンクリストは関数型言語で使うにはとってもエレガントです。というのも、
+一切の変更を伴うことなく操作できますし、再帰的に表現できますし、さらに遅延評価という
+魔法により無限リストでも動作するからです。
 
-Specifically, linked lists are nice because they represent an iteration without
-the need for any mutable state. The next step is just visiting the next sublist.
+<!-- Specifically, linked lists are nice because they represent an iteration without -->
+<!-- the need for any mutable state. The next step is just visiting the next sublist. -->
+特に、リンクリストは変更可能な状態を一切必要せずにイテレーションを表現できるのがよいです。
+次のステップに進むというのは単に次の部分リストを訪ねるだけでよいのですから。
 
 However it should be noted that Rust can pattern match on arrays and talk
 about sub-arrays [using slices][slices]! It's actually even more expressive
