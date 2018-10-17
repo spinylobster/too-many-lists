@@ -366,12 +366,18 @@ enum Foo {
 enumの全てのビットが0になり、そうでなければ、ヴァリアントはBです。これが上手くいくのは、非ゼロな
 ポインタを含む以上、Bの全てのビットが0になることは決してないからです。うまい！
 
-Can you think of other enums and types that could do this kind of optimization?
-There's actually a lot! This is why Rust leaves enum layout totally unspecified.
-Sadly the null pointer optimization is the only one implemented today -- though
-it's pretty important! It means `&`, `&mut`, `Box`, `Rc`, `Arc`, `Vec`, and
-several other important types in Rust have no overhead when put in an `Option`!
-(We'll get to most of these in due time).
+<!-- Can you think of other enums and types that could do this kind of optimization? -->
+<!-- There's actually a lot! This is why Rust leaves enum layout totally unspecified. -->
+<!-- Sadly the null pointer optimization is the only one implemented today -- though -->
+<!-- it's pretty important! It means `&`, `&mut`, `Box`, `Rc`, `Arc`, `Vec`, and -->
+<!-- several other important types in Rust have no overhead when put in an `Option`! -->
+<!-- (We'll get to most of these in due time). -->
+こんな感じの最適化ができるかもしれない他のenumや型を思いつきますか？実はたくさんあります。
+Rustがenumのlayoutを完全に未規定にしているのはこのためです。
+残念なことに、現時点で実装されているのはヌルポインタ最適化だけです――とはいえ、これはめっちゃ重要ですが。
+ヌルポインタ最適化はつまり、`&`・`&mut`・`Box`・`Rc`・`Arc`・`Vec`・
+その他Rustのいくつかの重要な型は`Option`の中に置かれてもオーバーヘッドがないということを意味するのです。
+（今言及した諸々のだいたいはいずれ説明します）
 
 <!-- So how do we avoid the extra junk, uniformly allocate, *and* get that sweet -->
 <!-- null-pointer optimization? We need to better separate out the idea of having an -->
