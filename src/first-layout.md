@@ -373,12 +373,12 @@ it's pretty important! It means `&`, `&mut`, `Box`, `Rc`, `Arc`, `Vec`, and
 several other important types in Rust have no overhead when put in an `Option`!
 (We'll get to most of these in due time).
 
-<!-- So how do we avoid the extra junk, uniformly allocate, *and* get that sweet
-null-pointer optimization? We need to better separate out the idea of having an
-element from allocating another list. To do this, we have to think a little more
-C-like: structs! -->
-では、無駄なゴミを作らず、統一的にメモリ割り当てし、*さらに*ヌルポインタ最適化の旨みまで
-手に入れるにはどうすればよいでしょうか？We need to better separate out the idea of having an
+<!-- So how do we avoid the extra junk, uniformly allocate, *and* get that sweet -->
+<!-- null-pointer optimization? We need to better separate out the idea of having an -->
+<!-- element from allocating another list. To do this, we have to think a little more -->
+<!-- C-like: structs! -->
+では、無駄に空間を使わず、統一的にメモリ割り当てし、その上*さらに*ヌルポインタ最適化の蜜まで吸うためには
+どうすればよいでしょうか？We need to better separate out the idea of having an
 element from allocating another list. そのためには、もう少しCっぽい考え方をしてやる必要があります：構造体です。
 <!-- うまい訳が思いつかないので一晩寝かせる -->
 
