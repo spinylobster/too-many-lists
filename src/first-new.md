@@ -8,8 +8,9 @@ impl List {
 }
 ```
 
-Now we just need to figure out how to actually write code. In Rust we declare
-a function like so:
+<!-- Now we just need to figure out how to actually write code. In Rust we declare -->
+<!-- a function like so: -->
+さて後は実際にコードを書く方法さえ分かればよいです。Rustでは以下のようにして関数を宣言します：
 
 ```rust
 fn foo(arg1: Type1, arg2: Type2) -> ReturnType {
