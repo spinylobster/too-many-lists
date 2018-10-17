@@ -358,10 +358,10 @@ enum Foo {
 }
 ```
 
-<!-- the null pointer optimization kicks in, which *eliminates the space needed for
-the tag*. If the variant is A, the whole enum is set to all `0`'s. Otherwise,
-the variant is B. This works because B can never be all `0`'s, since it contains
-a non-zero pointer. Slick! -->
+<!-- the null pointer optimization kicks in, which *eliminates the space needed for -->
+<!-- the tag*. If the variant is A, the whole enum is set to all `0`'s. Otherwise, -->
+<!-- the variant is B. This works because B can never be all `0`'s, since it contains -->
+<!-- a non-zero pointer. Slick! -->
 タグのために必要な空間を除去する最適化であるヌルポインタ最適化が効いてきます。ヴァリアントがAであれば、
 enumの全てのビットが0になり、そうでなければ、ヴァリアントはBです。これが上手くいくのは、非ゼロな
 ポインタを含む以上、Bの全てのビットが0になることは決してないからです。うまい！
@@ -382,9 +382,9 @@ several other important types in Rust have no overhead when put in an `Option`!
 element from allocating another list. そのためには、もう少しCっぽい考え方をしてやる必要があります：構造体です。
 <!-- うまい訳が思いつかないので一晩寝かせる -->
 
-<!-- While enums let us declare a type that can contain *one* of several values,
-structs let us declare a type that contains *many* values at once. Let's break
-our List into two types: A List, and a Node. -->
+<!-- While enums let us declare a type that can contain *one* of several values, -->
+<!-- structs let us declare a type that contains *many* values at once. Let's break -->
+<!-- our List into two types: A List, and a Node. -->
 複数の値の中の*一つ*を含むことのできる型を宣言させてくれるのがenumなのに対し、構造体は一度に
 *たくさんの*値を含む型を宣言させてくれます。Listを2つの型に分割しましょう：Listと、Nodeにです。
 
