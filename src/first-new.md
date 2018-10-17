@@ -1,6 +1,7 @@
 # New
 
-To associate actual code with a type, we use `impl` blocks:
+<!-- To associate actual code with a type, we use `impl` blocks: -->
+実際のコードと型を関連付けるためには、`impl`というものを使います：
 
 ```rust
 impl List {
@@ -34,7 +35,7 @@ impl List {
 }
 ```
 
-A few notes on this:
+<!-- A few notes on this: -->
 
 <!-- * Self is an alias for "that type I wrote at top next to `impl`". Great for -->
 <!--   not repeating yourself! -->
@@ -44,6 +45,9 @@ A few notes on this:
 <!-- * The last expression of a function is implicitly returned. -->
 <!--   This makes simple functions a little neater. You can still use `return` -->
 <!--   to return early like other C-like languages. -->
+
+いくつか留意すべき点としては、次のようなものがあります：
+
 * `Self`は「先頭で`impl`の隣に書いた例の型」を表すための別名です。Great for
   not repeating yourself!
 * 構造体のインスタンスを作る方法は宣言する方法とだいたい同じですが、フィールドの型を書くのではなく、
