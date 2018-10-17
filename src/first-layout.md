@@ -434,12 +434,17 @@ Could not compile `lists`.
 
 (´･_･\`)
 
-Rust is mad at us again. We marked the `List` as public (because we want people
-to be able to use it), but not the `Node`. The problem is that the internals of
-an `enum` are totally public, and we're not allowed to publicly talk about
-private types. We could make all of `Node` totally public, but generally in Rust
-we favour keeping implementation details private. Let's make `List` a struct, so
-that we can hide the implementation details:
+<!-- Rust is mad at us again. We marked the `List` as public (because we want people -->
+<!-- to be able to use it), but not the `Node`. The problem is that the internals of -->
+<!-- an `enum` are totally public, and we're not allowed to publicly talk about -->
+<!-- private types. We could make all of `Node` totally public, but generally in Rust -->
+<!-- we favour keeping implementation details private. Let's make `List` a struct, so -->
+<!-- that we can hide the implementation details: -->
+Rustはまた怒っています。我々は`List`をpublicにした（人々が使えるようにしたいので）にも関わらず
+`Node`はpublicにしていません。問題なのは、`enum`の内部構造は完全にpublicであり、
+そしてprivateな型に関してpublicな文脈で言及することは禁じられているということです。
+`Node`の全てをpublicにすることも可能ではありますが、一般的にRustでは実装の詳細はprivateにするのが
+好まれます。`List`を構造体にすることで、実装の詳細を隠蔽しましょう：
 
 
 ```rust
