@@ -358,10 +358,13 @@ enum Foo {
 }
 ```
 
-the null pointer optimization kicks in, which *eliminates the space needed for
+<!-- the null pointer optimization kicks in, which *eliminates the space needed for
 the tag*. If the variant is A, the whole enum is set to all `0`'s. Otherwise,
 the variant is B. This works because B can never be all `0`'s, since it contains
-a non-zero pointer. Slick!
+a non-zero pointer. Slick! -->
+タグのために必要な空間を除去する最適化であるヌルポインタ最適化が効いてきます。ヴァリアントがAであれば、
+enumの全てのビットが0になり、そうでなければ、ヴァリアントはBです。これが上手くいくのは、非ゼロな
+ポインタを含む以上、Bの全てのビットが0になることは決してないからです。うまい！
 
 Can you think of other enums and types that could do this kind of optimization?
 There's actually a lot! This is why Rust leaves enum layout totally unspecified.
