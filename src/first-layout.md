@@ -345,8 +345,11 @@ Hopefully this seems like an even worse idea to you. まず、
 <!-- manage to do の皮肉用法をどう訳すか。ここでは「偉業をやってのける」と煽ってみたが、 -->
 <!-- 新英和大辞典にあるように素直に「愚かにも〜する」とかでもよい気はする。 -->
 
-We previously saw that every enum has to store a *tag* to specify which variant
-of the enum its bits represent. However, if we have a special kind of enum:
+<!-- We previously saw that every enum has to store a *tag* to specify which variant -->
+<!-- of the enum its bits represent. However, if we have a special kind of enum: -->
+
+ビットパターンがどのヴァリアントを表しているかを指定するために全てのenumはタグを保持しておく必要があると
+前に学びました。しかし、もし次のような特別なenumである場合、
 
 ```rust
 enum Foo {
