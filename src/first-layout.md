@@ -432,7 +432,7 @@ error: aborting due to previous error
 Could not compile `lists`.
 ```
 
-:(
+(´･_･\`)
 
 Rust is mad at us again. We marked the `List` as public (because we want people
 to be able to use it), but not the `Node`. The problem is that the internals of
