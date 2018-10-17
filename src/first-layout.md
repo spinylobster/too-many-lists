@@ -438,8 +438,9 @@ struct Node {
 }
 ```
 
-Because `List` is a struct with a single field, its size is the same as that
-field. Yay zero-cost abstractions!
+<!-- Because `List` is a struct with a single field, its size is the same as that
+field. Yay zero-cost abstractions! -->
+`List`は単一のフィールドのみを持つ構造体なので、そのサイズはフィールドのサイズと同じです。ゼロコスト抽象化バンザイ。
 
 ```text
 > cargo build
