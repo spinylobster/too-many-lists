@@ -462,8 +462,13 @@ src/first.rs:12   next: Link,
                   ^~~~~~~~~~~~~
 ```
 
-Alright, that compiled! Rust is pretty mad, because as far as it can tell,
-everything we've written is totally useless: we never use `head`, and no one who
-uses our library can either since it's private. Transitively, that means Link
-and Node are useless too. So let's solve that! Let's implement some code for our
-List!
+<!-- Alright, that compiled! Rust is pretty mad, because as far as it can tell, -->
+<!-- everything we've written is totally useless: we never use `head`, and no one who -->
+<!-- uses our library can either since it's private. Transitively, that means Link -->
+<!-- and Node are useless too. So let's solve that! Let's implement some code for our -->
+<!-- List! -->
+よし、コンパイルが通りました。Rustはめっちゃ怒っています。なぜなら、Rustのわかる範囲の限りでは
+我々が書いたものは完全に役立たずだからです。我々は一度も`head`を使っておらず、また
+privateである以上我々のライブラリを使う人も`head`を使えません。必然的に、それはつまりLink
+とNodeも役に立たないということです。ということで、それを解決しましょう。我々のListのための
+コードを実装していきましょう。
