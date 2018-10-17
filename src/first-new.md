@@ -17,10 +17,13 @@ fn foo(arg1: Type1, arg2: Type2) -> ReturnType {
 }
 ```
 
-The first thing we want is a way to *construct* a list. Since we hide the
-implementation details, we need to provide that as a function. The usual way
-to do that in Rust is to provide a static method, which is just a
-normal function inside an `impl`:
+<!-- The first thing we want is a way to *construct* a list. Since we hide the -->
+<!-- implementation details, we need to provide that as a function. The usual way -->
+<!-- to do that in Rust is to provide a static method, which is just a -->
+<!-- normal function inside an `impl`: -->
+最初にほしいのは、リストを構築する方法です。実装の詳細を隠蔽するからには、
+リストを構築する方法を関数として提供してやる必要があるのです。
+Rustでそれをするための一般的な方法は、`impl`の中に普通の関数を書いたものである静的メソッドというものを提供することです。
 
 ```rust
 impl List {
