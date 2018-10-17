@@ -382,9 +382,11 @@ C-like: structs! -->
 element from allocating another list. そのためには、もう少しCっぽい考え方をしてやる必要があります：構造体です。
 <!-- うまい訳が思いつかないので一晩寝かせる -->
 
-While enums let us declare a type that can contain *one* of several values,
+<!-- While enums let us declare a type that can contain *one* of several values,
 structs let us declare a type that contains *many* values at once. Let's break
-our List into two types: A List, and a Node.
+our List into two types: A List, and a Node. -->
+複数の値の中の*一つ*を含むことのできる型を宣言させてくれるのがenumなのに対し、構造体は一度に
+*たくさんの*値を含む型を宣言させてくれます。Listを2つの型に分割しましょう：Listと、Nodeにです。
 
 As before, a List is either Empty or has an element followed by another List.
 However by representing the "has an element followed by another List" case by an
