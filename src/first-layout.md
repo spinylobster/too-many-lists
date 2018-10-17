@@ -392,11 +392,16 @@ pub enum List {
 }
 ```
 
-Let's check our priorities:
+<!-- Let's check our priorities: -->
+我々の優先事項を確認していきましょう：
 
-* Tail of a list never allocates extra junk: check!
-* `enum` is in delicious null-pointer-optimized form: check!
-* All elements are uniformly allocated: check!
+<!-- * Tail of a list never allocates extra junk: check! -->
+<!-- * `enum` is in delicious null-pointer-optimized form: check! -->
+<!-- * All elements are uniformly allocated: check! -->
+
+* リストの最後尾は決して無駄なゴミをメモリ割り当てしない：OK！
+* `enum`はヌルポインタ最適化の効く美味しい形になっている：OK！
+* 全ての要素は統一的にメモリ割り当てされている：OK！
 
 Alright! We actually just constructed exactly the layout that we used to
 demonstrate that our first layout (as suggested by the official Rust
