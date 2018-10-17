@@ -308,8 +308,11 @@ layout 1も突き詰めればやっていることは同じですが、Cをヒ�
 移動させることなくリスト内での順序を自由に動かせるという点があります。ポインタをいじればモノが
 「動いて」くれるからです。layout 1はこの性質を台無しにしてしまいます。
 
-Alright, I'm reasonably convinced Layout 1 is bad. How do we rewrite our List?
-Well, we could do something like:
+<!-- Alright, I'm reasonably convinced Layout 1 is bad. How do we rewrite our List? -->
+<!-- Well, we could do something like: -->
+
+よし、間違いなくlayout 1はダメだと断言できます。ではどう書き換えればいいの
+でしょうか？えーっと、こんな感じにもできますよね:
 
 ```rust
 pub enum List {
