@@ -41,14 +41,21 @@ move<!-- technical termな気がしてる -->するもよし、破壊するも�
 行ってしまったらめっちゃおもんない<!--かなり困ってググったらこれが出てきた。これよりうまい訳語が思いつかない。-->
 ですからね。
 
-A mutable reference represents temporary *exclusive access* to a value that you
-don't own. You're allowed to do absolutely anything you want to a value you
-have a mutable reference to as long as when your loan expires, wherever you
-loaned it from still sees a valid value. This means you can actually completely
-overwrite the value. A really useful special case of this is *swapping* a value
-out for another, which we'll be using a lot. The only thing you can't do with an
-`&mut` is move the value out with no replacement. `&mut self` is great for
-methods that want to mutate `self`.
+<!-- A mutable reference represents temporary *exclusive access* to a value that you -->
+<!-- don't own. You're allowed to do absolutely anything you want to a value you -->
+<!-- have a mutable reference to as long as when your loan expires, wherever you -->
+<!-- loaned it from still sees a valid value. This means you can actually completely -->
+<!-- overwrite the value. A really useful special case of this is *swapping* a value -->
+<!-- out for another, which we'll be using a lot. The only thing you can't do with an -->
+<!-- `&mut` is move the value out with no replacement. `&mut self` is great for -->
+<!-- methods that want to mutate `self`. -->
+ミュータブルな参照は所有していない値への一時的な*排他的アクセス*を表します。
+借用の期限が切れるタイミングで借用元に見えている値が有効なものであるという条件さえ守れば、
+ミュータブルな参照を持っている値に対しては好き勝手なことを無条件になんでもすることが許されています。
+これはつまりなんと値を完全に上書きしてもよいということです。非常に有用な特殊例として、値を別の値と*交換する*
+というのがあり、<!-- swap out の outを上手く訳出したい -->これは今後たくさん使っていきます。
+`&mut`に対してできない唯一のことは、代替の値を与えずに値をmove out<!-- これどうしよう -->することです。
+`self`を変更したいメソッドには`&mut self`が適しています。
 
 A shared reference represents temporary *shared access* to a value that you
 don't own. Because you have shared access, you're generally not allowed to
