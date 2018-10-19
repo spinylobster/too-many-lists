@@ -24,8 +24,9 @@ Rustにおける主だった3種の所有権を表現します。
 <!-- * `&self` - shared reference -->
 * `self` - 値
 * `&mut self` - ミュータブル(可変)な参照
-* `&self` - 共有された参照
+* `&self` - 共有参照
 <!-- 普通「イミュータブルな参照」と呼ばれているっぽくて困っている -->
+<!-- 「共有参照」と訳しているteratailを見つけたのでとりあえず採用 -->
 
 <!-- A value represents *true* ownership. You can do whatever you want with a value: -->
 <!-- move it, destroy it, mutate it, or loan it out via a reference. When you pass -->
@@ -57,10 +58,13 @@ move<!-- technical termな気がしてる -->するもよし、破壊するも�
 `&mut`に対してできない唯一のことは、代替の値を与えずに値をmove out<!-- これどうしよう -->することです。
 `self`を変更したいメソッドには`&mut self`が適しています。
 
-A shared reference represents temporary *shared access* to a value that you
-don't own. Because you have shared access, you're generally not allowed to
-mutate anything. Think of `&` as putting the value out on display in a museum.
-`&` is great for methods that only want to observe `self`.
+<!-- A shared reference represents temporary *shared access* to a value that you -->
+<!-- don't own. Because you have shared access, you're generally not allowed to -->
+<!-- mutate anything. Think of `&` as putting the value out on display in a museum. -->
+<!-- `&` is great for methods that only want to observe `self`. -->
+共有参照は所有していない値への一時的な*共用のアクセス*を表します。アクセス権が共有されているので、
+一般的に値への如何なる変更も許されていません。`&`というのを、美術館のディスプレーに値を置くみたいなものだと
+思うとよいでしょう。`self`を見るだけのメソッドには`&`が適しています。
 
 Later we'll see that the rule about mutation can be bypassed in certain cases.
 This is why shared references aren't called *immutable* references. Really,
