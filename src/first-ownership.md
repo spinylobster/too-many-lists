@@ -71,6 +71,6 @@ move<!-- technical termな気がしてる -->するもよし、破壊するも�
 <!-- mutable references could be called *unique* references, but we've found that -->
 <!-- relating ownership to mutability gives the right intuition 99% of the time. -->
 後に、特定の状況下ではこの値の変更に関するルールを無視する方法があるということを学んでいきます。
-共有参照が*イミュータブル(不変)*な参照と呼ばれない（訳注：まあ普通に呼ばれている気がしますが）
+共有参照が*イミュータブル\(不変\)*な参照と呼ばれない（訳注：まあ普通に呼ばれている気がしますが）
 のはそのためです。本当は、ミュータブルな参照は*一意的*参照と呼ぶこともできるでしょうが、
 所有権を値の変更可能性と関連付けることで99%の場合において正しい直感を得られるということが知られています。
