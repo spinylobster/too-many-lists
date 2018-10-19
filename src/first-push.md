@@ -1,7 +1,10 @@
 # Push
 
-So let's write pushing a value onto a list. `push` *mutates* the list,
-so we'll want to take `&mut self`. We also need to take an i32 to push:
+
+<!-- So let's write pushing a value onto a list. `push` *mutates* the list, -->
+<!-- so we'll want to take `&mut self`. We also need to take an i32 to push: -->
+ということでリストに値をプッシュするのを実装していきましょう。 `push`はリストを*変更*するので、
+引数として`&mut self`を取りたいところです。さらにプッシュするi32を一つ取る必要があります。
 
 ```rust,ignore
 impl List {
@@ -11,7 +14,8 @@ impl List {
 }
 ```
 
-First things first, we need to make a node to store our element in:
+<!-- First things first, we need to make a node to store our element in: -->
+まず最初に、要素を格納するためのノードを作る必要があります：
 
 ```rust,ignore
     pub fn push(&mut self, elem: i32) {
@@ -22,7 +26,8 @@ First things first, we need to make a node to store our element in:
     }
 ```
 
-What goes `next`? Well, the entire old list! Can we... just do that?
+<!-- What goes `next`? Well, the entire old list! Can we... just do that? -->
+`next`には何が入るでしょうか？まあ、旧いリスト全体です。…単にそうすればいいのでしょうか？
 
 ```rust
 impl List {
@@ -50,9 +55,15 @@ what exactly it means, or what to do about it:
 
 > cannot move out of borrowed content
 
-We're trying to move the `self.head` field out to `next`, but Rust doesn't want
-us doing that. This would leave `self` only partially initialized when we end
-the borrow and "give it back" to its rightful owner. As we said before, that's
+<!-- We're trying to move the `self.head` field out to `next`, but Rust doesn't want -->
+<!-- us doing that. This would leave `self` only partially initialized when we end -->
+<!-- the borrow and "give it back" to its rightful owner. As we said before, that's -->
+<!-- the *one* thing you can't do with an `&mut`: It would be super rude, -->
+<!-- and Rust is very polite (it would also be incredibly dangerous, but surely -->
+<!-- *that* isn't why it cares). -->
+`self.head`のフィールドを`next`にmove outしようとしているわけですが、Rustはそれをしてほしくないとのことです。
+それをしてしまうと、借用が終わって元の正当な所有者に「返却する」タイミングでは`self`
+は部分的にしか初期化されていない状態になってしまいます。前に言った通り、that's
 the *one* thing you can't do with an `&mut`: It would be super rude,
 and Rust is very polite (it would also be incredibly dangerous, but surely
 *that* isn't why it cares).
