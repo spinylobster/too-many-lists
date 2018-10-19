@@ -1,9 +1,12 @@
-# Ownership 101
+# 所有権入門
 
-Now that we can construct a list, it'd be nice to be able to *do* something
-with it. We do that with "normal" (non-static) methods. Methods are a special
-case of function in Rust because of  the `self` argument, which doesn't have
-a declared type:
+<!-- Now that we can construct a list, it'd be nice to be able to *do* something -->
+<!-- with it. We do that with "normal" (non-static) methods. Methods are a special -->
+<!-- case of function in Rust because of  the `self` argument, which doesn't have -->
+<!-- a declared type: -->
+リストが構築できるようになったからには、それを使ってなんか*できる*ようになれば嬉しいです。
+そのためには「普通の」（非staticな）メソッドを使います。メソッドというのはRustにおいては特殊な関数で、
+宣言された型を持たないselfという特殊な引数を取ります。
 
 ```rust,ignore
 fn foo(self, arg2: Type2) -> ReturnType {
@@ -11,19 +14,32 @@ fn foo(self, arg2: Type2) -> ReturnType {
 }
 ```
 
-There are 3 primary forms that self can take: `self`, `&mut self`, and `&self`.
-These 3 forms represent the three primary forms of ownership in Rust:
+<!-- There are 3 primary forms that self can take: `self`, `&mut self`, and `&self`. -->
+<!-- These 3 forms represent the three primary forms of ownership in Rust: -->
+selfは主に`self`・`&mut self`・`&self`という3種類を取ります。この3つの形は
+Rustにおける主だった3種の所有権を表現します。
 
-* `self` - Value
-* `&mut self` - mutable reference
-* `&self` - shared reference
+<!-- * `self` - Value -->
+<!-- * `&mut self` - mutable reference -->
+<!-- * `&self` - shared reference -->
+* `self` - 値
+* `&mut self` - ミュータブル(可変)な参照
+* `&self` - 共有された参照
+<!-- 普通「イミュータブルな参照」と呼ばれているっぽくて困っている -->
 
-A value represents *true* ownership. You can do whatever you want with a value:
-move it, destroy it, mutate it, or loan it out via a reference. When you pass
-something by value, it's *moved* to the new location. The new location now
-owns the value, and the old location can no longer access it. For this reason
-most methods don't want `self` -- it would be pretty lame if trying to work with
-a list made it go away!
+<!-- A value represents *true* ownership. You can do whatever you want with a value: -->
+<!-- move it, destroy it, mutate it, or loan it out via a reference. When you pass -->
+<!-- something by value, it's *moved* to the new location. The new location now -->
+<!-- owns the value, and the old location can no longer access it. For this reason -->
+<!-- most methods don't want `self` -- it would be pretty lame if trying to work with -->
+<!-- a list made it go away! -->
+値というのは、*真に*所有権を持っているということを表現します。値に対しては好き勝手なことをして構いません：
+move<!-- technical termな気がしてる -->するもよし、破壊するもよし、変更するもよし、
+参照を使って貸し出すもよし。何かを値で渡したとき、その値は新たな場所に*move*されます。
+その新たな場所が値の所有者になり、元の場所からはもはやアクセスできなくなります。そのため、
+ほとんどのメソッドでは`self`を使いたくありません――リストを扱おうとすることによってリストがどこかに
+行ってしまったらめっちゃおもんない<!--かなり困ってググったらこれが出てきた。これよりうまい訳語が思いつかない。-->
+ですからね。
 
 A mutable reference represents temporary *exclusive access* to a value that you
 don't own. You're allowed to do absolutely anything you want to a value you
